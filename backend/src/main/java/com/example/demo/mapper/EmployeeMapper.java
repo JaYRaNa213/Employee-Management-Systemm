@@ -10,7 +10,14 @@ public class EmployeeMapper {
                 employee.getId(),
                 employee.getFirstname(),
                 employee.getLastname(),
-                employee.getEmail()
+                employee.getEmail(),
+                employee.getDepartment() != null ? employee.getDepartment().getId() : null,
+                employee.getEmployeeId(),
+                employee.getDesignation(),
+                employee.getPhone(),
+                employee.getAddress(),
+                employee.getProfilePhoto(),
+                null
         );
     }
 
@@ -19,7 +26,13 @@ public class EmployeeMapper {
                 employeeDto.getId(),
                 employeeDto.getFirstname(),
                 employeeDto.getLastname(),
-                employeeDto.getEmail()
+                employeeDto.getEmail(),
+                employeeDto.getEmployeeId(),
+                employeeDto.getDesignation(),
+                employeeDto.getPhone(),
+                employeeDto.getAddress(),
+                employeeDto.getProfilePhoto(),
+                null
         );
     }
 }
