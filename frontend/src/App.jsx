@@ -7,6 +7,9 @@ import GetAllEmployees from "./pages/GetAllEmployees.jsx";
 import AddEmployee from "./pages/AddEmployee.jsx";
 import About from "./pages/About.jsx";
 import NotFound from "./pages/NotFound.jsx";
+import Login from "./pages/Login.jsx";
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
+import EmployeeProfile from "./pages/EmployeeProfile.jsx";
 
 function App() {
   return (
@@ -17,10 +20,12 @@ function App() {
         <main className="flex-grow-1">
           <Routes>
             <Route path="/" element={<Dashboard />} />
-            <Route path="/employees" element={<GetAllEmployees />} />
-            <Route path="/add-employee" element={<AddEmployee />} />
-            <Route path="/update-employee/:id" element={<AddEmployee />} />
+            <Route path="/employees" element={<ProtectedRoute><GetAllEmployees /></ProtectedRoute>} />
+            <Route path="/add-employee" element={<ProtectedRoute allowedRoles={['ADMIN']}><AddEmployee /></ProtectedRoute>} />
+            <Route path="/update-employee/:id" element={<ProtectedRoute allowedRoles={['ADMIN', 'EMPLOYEE']}><AddEmployee /></ProtectedRoute>} />
             <Route path="/about" element={<About />} />
+            <Route path="/employee/:id" element={<EmployeeProfile />} />
+            <Route path="/login" element={<Login />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>

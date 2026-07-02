@@ -17,5 +17,13 @@ public class EmployeeDto {
     private String firstname ;
     private String lastname ;
     private String email;
+    private Long departmentId;
+
+    private String employeeId;
+    private String designation;
+    private String phone;
+    private String address;
+    private String profilePhoto;
+    private String generatedPassword;
 
 }

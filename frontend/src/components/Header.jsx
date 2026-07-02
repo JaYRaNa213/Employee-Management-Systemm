@@ -1,7 +1,17 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { isUserLoggedIn, getRole, logout, getLoggedInEmployeeId } from '../services/AuthService';
 
 const Header = () => {
+  const isAuth = isUserLoggedIn();
+  const role = getRole();
+  const employeeId = getLoggedInEmployeeId();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
   return (
     <header>
       <nav className="navbar navbar-expand-lg navbar-light bg-white border-bottom">
@@ -45,12 +55,30 @@ const Header = () => {
               </li>
             </ul>
 
-            {/* Right: Quick Action Button */}
-            <div className="d-flex">
-              <Link to="/add-employee" className="btn btn-primary shadow-sm">
-                <i className="bi bi-person-plus-fill me-2"></i>
-                Add Employee
-              </Link>
+            <div className="d-flex align-items-center gap-3">
+              {isAuth && employeeId && employeeId !== 'undefined' && employeeId !== 'null' && (
+                <Link to={`/employee/${employeeId}`} className="btn btn-outline-primary shadow-sm">
+                  <i className="bi bi-person-circle me-2"></i>
+                  My Profile
+                </Link>
+              )}
+
+              {isAuth && role === 'ADMIN' && (
+                <Link to="/add-employee" className="btn btn-primary shadow-sm">
+                  <i className="bi bi-person-plus-fill me-2"></i>
+                  Add Employee
+                </Link>
+              )}
+
+              {isAuth ? (
+                <button onClick={handleLogout} className="btn btn-outline-danger shadow-sm">
+                  Logout
+                </button>
+              ) : (
+                <Link to="/login" className="btn btn-primary shadow-sm">
+                  Login
+                </Link>
+              )}
             </div>
           </div>
         </div>
