@@ -115,6 +115,7 @@ const Dashboard = () => {
                 <div className="text-muted small text-uppercase fw-semibold mb-3">Quick Actions</div>
                 <div className="d-grid gap-2">
                   <Link to="/add-employee" className="btn btn-primary btn-sm">➕ Add Employee</Link>
+                  <Link to="/add-department" className="btn btn-success btn-sm">➕ Add Department</Link>
                   <Link to="/employees" className="btn btn-outline-secondary btn-sm">📋 View All Employees</Link>
                 </div>
               </div>

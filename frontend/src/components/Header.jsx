@@ -49,6 +49,11 @@ const Header = () => {
                 </NavLink>
               </li>
               <li className="nav-item">
+                <NavLink className="nav-link" to="/departments">
+                  Departments
+                </NavLink>
+              </li>
+              <li className="nav-item">
                 <NavLink className="nav-link" to="/about">
                   About
                 </NavLink>
@@ -64,10 +69,16 @@ const Header = () => {
               )}
 
               {isAuth && role === 'ADMIN' && (
-                <Link to="/add-employee" className="btn btn-primary shadow-sm">
-                  <i className="bi bi-person-plus-fill me-2"></i>
-                  Add Employee
-                </Link>
+                <>
+                  <Link to="/add-department" className="btn btn-success shadow-sm">
+                    <i className="bi bi-building-add me-2"></i>
+                    Add Department
+                  </Link>
+                  <Link to="/add-employee" className="btn btn-primary shadow-sm">
+                    <i className="bi bi-person-plus-fill me-2"></i>
+                    Add Employee
+                  </Link>
+                </>
               )}
 
               {isAuth ? (
