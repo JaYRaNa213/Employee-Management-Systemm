@@ -54,4 +54,12 @@ public class DepartmentServiceImpl implements DepartmentService {
 
         return DepartmentMapper.mapToDepartmentDto(getDepartment);
     }
+
+    @Override
+    public void deleteDepartment(Long departmentId) {
+        Department department = departmentRepository.findById(departmentId)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Department does not exist with this id :" + departmentId));
+        departmentRepository.delete(department);
+    }
 }

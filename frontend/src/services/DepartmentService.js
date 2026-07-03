@@ -12,3 +12,6 @@ export const addNewDepartment = (department) =>
 
 export const getDepartment = (departmentId) =>
   axios.get(REST_API_BASE_URL + "/" + departmentId);
+
+export const deleteDepartment = (departmentId) =>
+  axios.delete(REST_API_BASE_URL + "/" + departmentId);
